@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Form from "./Components/Form/Form";
-import ListItem from "./Components/List/List";
+import List from "./Components/List/List";
 
 function App() {
   const [item, setItem] = useState([
@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <Form AddNewCourse={AddNewCourse} />
-      <ListItem items={item} RemoveHandler={RemoveHandler} />
+      <List items={item} RemoveHandler={RemoveHandler} />
     </div>
   );
 }
