@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./List.module.css";
-import { Form, List } from "./items";
+import Items, { Form, List } from "./items";
 
 const ListItem = ({ items, RemoveHandler }) => {
   const [edit, setEdit] = useState(false);
@@ -13,7 +13,7 @@ const ListItem = ({ items, RemoveHandler }) => {
     items.map((item, index) => {
       return (
         <div key={index} className={styles.ListItem}>
-          <List
+          <Items
             Data={item}
             index={index}
             RemoveHandler={RemoveHandler}
