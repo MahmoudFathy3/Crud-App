@@ -2,19 +2,30 @@ import React, { Fragment, useState } from "react";
 import styles from "./List.module.css";
 
 // Update Course
-export const Form = ({ SubmitHandler, Data }) => {
-  const [value, setValue] = useState(Data.name);
+export const Form = ({ Data, setForm, UpdateHandler, index }) => {
+  const [Newvalue, setNewValue] = useState(Data.name);
+
+  //Update Edite
+  const SubmitHandler = (e) => {
+    e.preventDefault();
+    UpdateHandler(Newvalue, index);
+    setForm(false);
+  };
 
   return (
     <form onSubmit={SubmitHandler} className={styles.update}>
-      <input type="text" defaultValue={value} />
+      <input
+        type="text"
+        value={Newvalue}
+        onChange={(e) => setNewValue(e.target.value)}
+      />
       <button type="submit">Update</button>
     </form>
   );
 };
 
 // Loop With Course
-const Items = ({ Data, index, RemoveHandler, HandleState, SubmitHandler }) => {
+const Items = ({ Data, index, RemoveHandler, HandleState, UpdateHandler }) => {
   const [form, setForm] = useState(false);
   const List = (
     <ul>
@@ -37,8 +48,20 @@ const Items = ({ Data, index, RemoveHandler, HandleState, SubmitHandler }) => {
       </li>
     </ul>
   );
-
-  return <Fragment> {form ? <Form Data={Data} /> : List}</Fragment>;
+  return (
+    <Fragment>
+      {form ? (
+        <Form
+          Data={Data}
+          setForm={setForm}
+          UpdateHandler={UpdateHandler}
+          index={index}
+        />
+      ) : (
+        List
+      )}
+    </Fragment>
+  );
 };
 
 export default Items;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styles from "./List.module.css";
-import Items, { Form, List } from "./items";
+import Items, { Form } from "./items";
 
-const ListItem = ({ items, RemoveHandler }) => {
+const ListItem = ({ items, RemoveHandler, UpdateHandler }) => {
   const [edit, setEdit] = useState(false);
 
   const HandleState = () => {
@@ -18,6 +18,7 @@ const ListItem = ({ items, RemoveHandler }) => {
             index={index}
             RemoveHandler={RemoveHandler}
             HandleState={HandleState}
+            UpdateHandler={UpdateHandler}
           />
         </div>
       );
@@ -26,14 +27,8 @@ const ListItem = ({ items, RemoveHandler }) => {
     <p style={{ color: "#FFF", fontSize: "25px" }}>There are no courses</p>
   );
 
-  //Update Edite
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-    setEdit(false);
-  };
-
   const EditCourse = () => {
-    return <Form SubmitHandler={SubmitHandler} />;
+    return <Form />;
   };
 
   return <div className={styles.List}>{edit ? EditCourse() : Lists}</div>;

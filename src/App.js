@@ -5,13 +5,13 @@ import List from "./Components/List/List";
 
 function App() {
   const [item, setItem] = useState([
-    { name: "Html" },
-    { name: "Css" },
-    { name: "JavaScript" },
+    { id: 1, name: "Html" },
+    { id: 2, name: "Css" },
+    { id: 3, name: "JavaScript" },
   ]);
 
   //Add New Course
-  const AddNewCourse = (value, e) => {
+  const AddNewCourse = (value) => {
     if (value.name.length !== 0) {
       setItem((PrevItem) => {
         return [...PrevItem, value];
@@ -28,10 +28,23 @@ function App() {
     });
   };
 
+  const UpdateHandler = (value, index) => {
+    let items = item;
+    let newItem = items[index];
+    newItem["name"] = value;
+    setItem({ item: items });
+    console.log(item);
+  };
+
   return (
     <div className="App">
       <Form AddNewCourse={AddNewCourse} />
-      <List items={item} RemoveHandler={RemoveHandler} />
+      <List
+        items={item}
+        RemoveHandler={RemoveHandler}
+        setItem={setItem}
+        UpdateHandler={UpdateHandler}
+      />
     </div>
   );
 }
