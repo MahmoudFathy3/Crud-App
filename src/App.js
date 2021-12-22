@@ -28,12 +28,12 @@ function App() {
     });
   };
 
+  // Update item
   const UpdateHandler = (value, index) => {
     let items = item;
     let newItem = items[index];
     newItem["name"] = value;
-    setItem({ item: items });
-    console.log(item);
+    setItem({ items });
   };
 
   return (
@@ -42,7 +42,6 @@ function App() {
       <List
         items={item}
         RemoveHandler={RemoveHandler}
-        setItem={setItem}
         UpdateHandler={UpdateHandler}
       />
     </div>

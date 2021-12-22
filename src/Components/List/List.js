@@ -5,6 +5,9 @@ import Items, { Form } from "./items";
 const ListItem = ({ items, RemoveHandler, UpdateHandler }) => {
   const [edit, setEdit] = useState(false);
 
+  console.log(items);
+  console.log(items.length);
+
   const HandleState = () => {
     setEdit(true);
   };
