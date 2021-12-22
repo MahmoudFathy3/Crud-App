@@ -11,7 +11,7 @@ function App() {
   ]);
 
   //Add New Course
-  const AddNewCourse = (value) => {
+  const AddNewCourse = (value, id) => {
     if (value.name.length !== 0) {
       setItem((PrevItem) => {
         return [...PrevItem, value];
@@ -22,9 +22,9 @@ function App() {
   };
 
   // Remove item for click
-  const RemoveHandler = (index) => {
+  const RemoveHandler = (id) => {
     setItem((PrevItem) => {
-      return item.filter((el, idx) => idx !== index);
+      return item.filter((el, idx) => el.id !== id);
     });
   };
 
@@ -33,7 +33,7 @@ function App() {
     let items = item;
     let newItem = items[index];
     newItem["name"] = value;
-    setItem({ items });
+    setItem([...items]);
   };
 
   return (

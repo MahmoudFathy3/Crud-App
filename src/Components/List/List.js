@@ -5,17 +5,15 @@ import Items, { Form } from "./items";
 const ListItem = ({ items, RemoveHandler, UpdateHandler }) => {
   const [edit, setEdit] = useState(false);
 
-  console.log(items);
-  console.log(items.length);
-
   const HandleState = () => {
     setEdit(true);
   };
 
   const Lists = items.length ? (
     items.map((item, index) => {
+      let random = Math.floor(Math.random() * 700);
       return (
-        <div key={index} className={styles.ListItem}>
+        <div key={random} className={styles.ListItem}>
           <Items
             Data={item}
             index={index}

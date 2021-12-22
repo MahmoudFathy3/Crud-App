@@ -3,11 +3,13 @@ import styles from "./Form.module.css";
 
 const Form = ({ AddNewCourse }) => {
   const [value, setValue] = useState({
+    id: Math.floor(Math.random() * 700),
     name: "",
   });
 
   const ChangHandle = (e) => {
     setValue({
+      id: Math.floor(Math.random() * 700),
       name: e.target.value,
     });
   };

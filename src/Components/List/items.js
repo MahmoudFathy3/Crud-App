@@ -33,7 +33,7 @@ const Items = ({ Data, index, RemoveHandler, HandleState, UpdateHandler }) => {
         <span>{Data.name}</span>
         <button
           type="submit"
-          onClick={(e) => RemoveHandler(index)}
+          onClick={(e) => RemoveHandler(Data.id)}
           className={styles.Remove}
         >
           Remove Course
